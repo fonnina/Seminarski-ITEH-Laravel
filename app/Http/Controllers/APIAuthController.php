@@ -22,6 +22,7 @@ class APIAuthController extends Controller
             if ($user->lozinka == $request->get('lozinka'))
                 return response()->json([
                     'message' => 'Uspešno ste se prijavili',
+                    'admin' => $user->admin
                 ]);
             else
                 return response()->json([
