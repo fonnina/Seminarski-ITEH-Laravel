@@ -60,4 +60,13 @@ class StudentController extends Controller
             'message' => 'Uspešna promena statusa uplate školarine',
         ]);
     }
+
+    function obrisiStudenta($id)
+    {
+        DB::table('users')->where('id', '=', $id)->delete();
+
+        return response()->json([
+            'message' => 'Student uspešno obrisan'
+        ]);
+    }
 }
