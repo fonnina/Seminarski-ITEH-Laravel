@@ -19,7 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('prijava', [APIAuthController::class, 'prijava']);
 Route::get('svistudenti', [StudentController::class, 'sviStudenti']);
+Route::get('studentiuplate', [StudentController::class, 'studentiUplate']);
 Route::get('ispiti', [IspitController::class, 'ispiti']);
+Route::post('promenistatusuplate', [StudentController::class, 'promeniStatusUplate']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
