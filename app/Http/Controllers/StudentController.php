@@ -61,12 +61,32 @@ class StudentController extends Controller
         ]);
     }
 
-    function obrisiStudenta($id)
+    public function obrisiStudenta($id)
     {
         DB::table('users')->where('id', '=', $id)->delete();
 
         return response()->json([
             'message' => 'Student uspešno obrisan'
+        ]);
+    }
+
+
+    public function sacuvajStudenta(Request $request)
+    {
+        DB::table('users')->insert([
+            'ime_prezime' => $request->get('ime_prezime'),
+            'email' => $request->get('email'),
+            'korisnicko_ime' => $request->get('korisnicko_ime'),
+            'lozinka' => $request->get('lozinka'),
+            'budzet' => $request->get('budzet'),
+            'uplata_skolarine' => $request->get('uplata_skolarine'),
+            'godina' => $request->get('godina'),
+            'prosek' => $request->get('prosek'),
+            'admin' => $request->get('admin'),
+        ]);
+
+        return response()->json([
+            'message' => 'Student uspešno sačuvan'
         ]);
     }
 }
