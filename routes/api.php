@@ -23,6 +23,7 @@ Route::get('studentiuplate', [StudentController::class, 'studentiUplate']);
 Route::delete('obrisistudenta/{id}', [StudentController::class, 'obrisiStudenta']);
 Route::post('promenistatusuplate', [StudentController::class, 'promeniStatusUplate']);
 Route::post('sacuvajstudenta', [StudentController::class, 'sacuvajStudenta']);
+Route::post('pretragastudenata', [StudentController::class, 'pretragaStudenata']);
 Route::get('ispiti', [IspitController::class, 'ispiti']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

@@ -89,4 +89,24 @@ class StudentController extends Controller
             'message' => 'Student uspešno sačuvan'
         ]);
     }
+
+
+    public function pretragaStudenata(Request $request)
+    {
+        $pretraga = $request->get('pretragaInput');
+
+        $studenti = DB::table('users')
+            ->where(function ($query) use ($pretraga) {
+                $query->where('ime_prezime', 'like', '%' . $pretraga . '%')
+                    ->orWhere('email', 'like', '%' . $pretraga . '%')
+                    ->orWhere('korisnicko_ime', 'like', '%' . $pretraga . '%');
+            })
+            ->where('admin', '=', 0)
+            ->where('budzet', '=', 0)
+            ->get();
+
+        return response()->json([
+            'studenti' => $studenti
+        ]);
+    }
 }
